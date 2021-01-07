@@ -1,0 +1,9 @@
+name: MSNewsDisplay
+version: @version@
+main: ru.plasticalbe.msnewsdisplay.MSNewsDisplayPlugin
+api-version: 1.16
+authors: [ Plasticable ]
+commands:
+  news: {
+
+  }

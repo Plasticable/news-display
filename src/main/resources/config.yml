@@ -1,0 +1,9 @@
+vk:
+  # News group id, must not be start with minus
+  group-id: 0
+
+  # https://vk.com/dev/service_token
+  service-access-token: ''
+
+  # Delay between checking posts in seconds
+  posts-check-delay-seconds: 120

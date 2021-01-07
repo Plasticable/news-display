@@ -1,0 +1,49 @@
+import org.apache.tools.ant.filters.ReplaceTokens
+
+plugins {
+    id 'java'
+    id 'com.github.johnrengelman.shadow' version '6.1.0'
+}
+
+group = 'ru.plasticalbe'
+version = '1.0.0'
+
+//noinspection GroovyUnusedAssignment
+sourceCompatibility = targetCompatibility = '1.8'
+
+repositories {
+    mavenCentral()
+    maven {
+        name = 'papermc-repo'
+        url = 'https://papermc.io/repo/repository/maven-public/'
+    }
+    maven {
+        name = 'sonatype'
+        url = 'https://oss.sonatype.org/content/groups/public/'
+    }
+}
+
+dependencies {
+    //region Lombok
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+
+    testCompileOnly 'org.projectlombok:lombok:1.18.16'
+    testAnnotationProcessor 'org.projectlombok:lombok:1.18.16'
+    //endregion
+
+    compile 'com.h2database:h2-mvstore:1.4.200'
+    compile 'org.apache.httpcomponents:httpclient:4.5.13'
+
+    compileOnly 'com.destroystokyo.paper:paper-api:1.16.4-R0.1-SNAPSHOT'
+
+    testCompile 'org.apache.logging.log4j:log4j-slf4j-impl:2.11.2'
+    testCompile 'org.junit.jupiter:junit-jupiter-api:5.7.0'
+    testCompileOnly 'com.google.code.gson:gson:2.8.0'
+}
+
+processResources {
+    from(sourceSets.main.resources.srcDirs) {
+        filter ReplaceTokens, tokens: [version: version]
+    }
+}
